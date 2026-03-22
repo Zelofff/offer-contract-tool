@@ -11,3 +11,20 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Analysis {
+  id          String         @id @default(cuid())
+  title       String
+  sourceText  String
+  status      AnalysisStatus @default(DRAFT)
+  resultJson  Json?
+  createdAt   DateTime       @default(now())
+  completedAt DateTime?
+}
+
+enum AnalysisStatus {
+  DRAFT
+  RUNNING
+  COMPLETED
+  FAILED
+}
