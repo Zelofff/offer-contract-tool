@@ -1,7 +1,13 @@
 import Fastify from "fastify";
+import cors from "@fastify/cors";
+
 import { analysesRoutes } from "./routes/analyses";
 
 const app = Fastify({ logger: true });
+
+await app.register(cors, {
+  origin: "http://localhost:5173",
+});
 
 app.register(analysesRoutes, { prefix: "/analyses" });
 
