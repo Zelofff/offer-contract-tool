@@ -33,6 +33,25 @@ export const AnalysesListPage = () => {
     return <p className="text-2xl font-semibold tracking-tight">Loading...</p>;
   }
 
+  if (!analyses || analyses?.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center px-6 py-16 text-center">
+        <div className="rounded-full bg-zinc-100 p-3">
+          <div className="h-6 w-6 rounded bg-zinc-300" />
+        </div>
+        <h2 className="mt-4 text-sm font-semibold text-zinc-900">
+          No analyses yet
+        </h2>
+        <p className="mt-1 max-w-sm text-sm text-zinc-500">
+          Create your first contract analysis to extract compensation, legal
+          terms, and risks.
+        </p>
+      </div>
+    );
+  }
+
+  console.log(analyses);
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <div className="mb-8 flex items-start justify-between">
